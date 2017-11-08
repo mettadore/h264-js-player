@@ -4,20 +4,15 @@
   </head>
   <body>
 
-    <button type="button" onclick="wsavc.playStream()">Start Video</button>
-    <button type="button" onclick="wsavc.stopStream()">Stop Video</button>
-    <button type="button" onclick="wsavc.disconnect()">Disconnect</button>
-    <br/>
-
   <!-- provide WSAvcPlayer -->
-    <script type="text/javascript" src="http-live-player.js">;</script>
+    <script type="text/javascript" src="assets/js/http-live-player.js">;</script>
     <script type="text/javascript">
 
-var canvas = document.createElement("canvas");
-document.body.appendChild(canvas);
+    var canvas = document.createElement("canvas");
+    document.body.appendChild(canvas);
 
-// Create h264 player
-var uri = "ws://" + document.location.host;
+    // Create h264 player
+var uri = location.origin.replace('http', 'ws') + ':8081';
 var wsavc = new WSAvcPlayer(canvas, "webgl", 1, 35);
 wsavc.connect(uri);
 
